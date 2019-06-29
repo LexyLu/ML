@@ -18,10 +18,28 @@ else
   trainndx = 1:60000; 
   testndx =  1:1000; 
 end
+
+
+% Comment this in for Exercise 1.1
+% if 1
+%   % to illustrate that shuffling the features does not affect classification performance
+%   perm  = randperm(28*28);
+%   mnist.train_images = reshape(mnist.train_images, [28*28 60000]);
+%   mnist.train_images = mnist.train_images(perm, :);
+%   mnist.train_images = reshape(mnist.train_images, [28 28 60000]);
+% 
+%   mnist.test_images = reshape(mnist.test_images, [28*28 10000]);
+%   mnist.test_images = mnist.test_images(perm, :);
+%   mnist.test_images = reshape(mnist.test_images, [28 28 10000]);
+% end
+
+
 ntrain = length(trainndx);
 ntest = length(testndx);
 Xtrain = double(reshape(mnist.train_images(:,:,trainndx),28*28,ntrain)');
 Xtest  = double(reshape(mnist.test_images(:,:,testndx),28*28,ntest)');
+
+
 
 if 0 
   % matrix is real-valued but has many zeros due to black boundary
